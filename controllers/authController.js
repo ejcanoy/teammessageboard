@@ -37,10 +37,6 @@ passport.deserializeUser(async (id, done) => {
     };
 });
 
-exports.index_test = (req, res) => {
-    res.render("testIndex" );
-}
-
 exports.index = (req, res) => {
     res.render("index", { account: req.user, title: `team message board`});
 }
