@@ -68,6 +68,7 @@ exports.log_in_post = passport.authenticate("local", {
 })
 
 exports.log_out_get = (req,res,next) => {
+    console.log("here");
     req.logout((err) => {
         if (err) {
             return next(err);
