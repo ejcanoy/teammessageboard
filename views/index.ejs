@@ -11,20 +11,10 @@
 
 <body>
   <% if (account) {%>
-    <h1>WELCOME BACK <%= account.username %>
-    </h1>
-    <a href="/log-out">LOG OUT</a>
-    <% } else { %>
-      <a href="/sign-up">sign up</a>
-      <h1>please log in</h1>
-      <form action="/log-in" method="POST">
-        <label for="username">Username</label>
-        <input name="username" placeholder="username" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <button>Log In</button>
-      </form>
-      <%}%>
+    <%- include('message.ejs') %>
+  <% } else { %>    
+    <%- include('log-in-form.ejs') %>
+  <%}%>
 </body>
 
 </html>
