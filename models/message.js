@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MessageSchema = new Schema({
-    account_id: [{ type: Schema.Types.ObjectId, ref: "Account"}],
+    account_id: { type: Schema.Types.ObjectId, ref: "Account"},
     message_date: { type: String },
     title: { type: String },
     message: { type: String },

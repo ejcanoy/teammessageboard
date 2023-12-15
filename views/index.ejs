@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <% if (account) {%>
+  <% if (currentUser) {%>
     <%- include('message.ejs') %>
   <% } else { %>    
     <%- include('log-in-form.ejs') %>

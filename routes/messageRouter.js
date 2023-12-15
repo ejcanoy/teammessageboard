@@ -4,6 +4,6 @@ const router = express.Router();
 const account_controller = require("../controllers/accountController");
 const message_controller = require("../controllers/messageController");
 
-
+router.post("/message", message_controller.message_post);
 
 module.exports = router;

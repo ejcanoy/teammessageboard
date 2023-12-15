@@ -1,6 +1,5 @@
 const Account = require("../models/account");
 const asyncHandler = require("express-async-handler");
-const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
@@ -38,7 +37,8 @@ passport.deserializeUser(async (id, done) => {
 });
 
 exports.index = (req, res) => {
-    res.render("index", { account: req.user, title: `team message board`});
+    res.locals.currentUser = req.user;
+    res.render("index", { title: `team message board`});
 }
 
 exports.sign_up_get = (req, res) => {
