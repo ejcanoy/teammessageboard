@@ -8,21 +8,35 @@
 <h2>Messages</h2>
 
 <div>
-    
+    <ul>
+        <% for (let i=0; i < messages.length; i++) { %>
+            <li>
+                <div>
+                    <%= messages[i].account_id.username %>
+                    <span>
+                        <%= messages[i].message_date %>
+                    </span>
+                </div>
+                <div>
+                    <%= messages[i].message %>
+                </div>
+            </li>
+            <%} %>
+    </ul>
 </div>
 
 <div class="">
-    <form method="POST" action="/message" >
-      <div >
+    <form method="POST" action="/message">
         <div>
-            <div><label for="">title</label></div>
-            <input type="text" name="title" class="">
+            <div>
+                <div><label for="">title</label></div>
+                <input type="text" name="title" class="">
+            </div>
+            <div>
+                <div><label class="font-bold" for="">Message</label></div>
+                <textarea class="" name="message" id="" cols="55" rows="2"></textarea>
+            </div>
         </div>
-        <div>
-            <div><label class="font-bold" for="">Message</label></div>
-            <textarea class="" name="message" id="" cols="55" rows="2"></textarea>
-        </div>
-      </div>
-      <button type="submit" class="">Add new message</button>
-   </form>
-  </div>
+        <button type="submit" class="">Add new message</button>
+    </form>
+</div>

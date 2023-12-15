@@ -1,4 +1,5 @@
 const Account = require("../models/account");
+const Message = require("../models/message");
 const asyncHandler = require("express-async-handler");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -36,10 +37,16 @@ passport.deserializeUser(async (id, done) => {
     };
 });
 
-exports.index = (req, res) => {
+exports.index = asyncHandler(async (req, res) => {
+    let messages;
     res.locals.currentUser = req.user;
-    res.render("index", { title: `team message board`});
-}
+    if (req.user) {
+        messages = await Message.find({})
+        .populate("account_id")
+        .exec();
+    }
+    res.render("index", { messages: messages, title: `team message board`});
+})
 
 exports.sign_up_get = (req, res) => {
     res.render("sign-up-form");
