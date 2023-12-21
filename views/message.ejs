@@ -1,8 +1,16 @@
-<h1>WELCOME BACK <%= currentUser.username %>
-</h1>
+<% if (currentUser) { %>
+    <h1>
+        WELCOME BACK <%= currentUser.username %>
+    </h1>
+    <a href="/log-out">LOG OUT</a>
+<% } else { %>
+    <h1>
+        Sign in to see post a message and see who posted the other ones!
+    </h1>
+<% } %>
 
 
-<a href="/log-out">LOG OUT</a>
+
 
 
 <h2>Messages</h2>
@@ -11,12 +19,14 @@
     <ul>
         <% for (let i=0; i < messages.length; i++) { %>
             <li>
+                <% if (currentUser) { %>
                 <div>
                     <%= messages[i].account_id.username %>
                     <span>
                         <%= messages[i].message_date %>
                     </span>
                 </div>
+                <% } %>
                 <div>
                     <%= messages[i].message %>
                 </div>
@@ -25,6 +35,7 @@
     </ul>
 </div>
 
+<% if (currentUser) { %>
 <div class="">
     <form method="POST" action="/message">
         <div>
@@ -40,3 +51,4 @@
         <button type="submit" class="">Add new message</button>
     </form>
 </div>
+<% } %>

@@ -10,11 +10,11 @@
 </head>
 
 <body>
-  <% if (currentUser) {%>
-    <%- include('message.ejs') %>
-  <% } else { %>    
+  <% if (!currentUser) { %>
     <%- include('log-in-form.ejs') %>
-  <%}%>
+  <% } %>
+  <%- include('message.ejs') %>
+
 </body>
 
 </html>

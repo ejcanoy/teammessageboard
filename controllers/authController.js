@@ -40,11 +40,9 @@ passport.deserializeUser(async (id, done) => {
 exports.index = asyncHandler(async (req, res) => {
     let messages;
     res.locals.currentUser = req.user;
-    if (req.user) {
-        messages = await Message.find({})
+    messages = await Message.find({})
         .populate("account_id")
         .exec();
-    }
     res.render("index", { messages: messages, title: `team message board`});
 })
 
