@@ -6,6 +6,7 @@
     <title>Member Form</title>
 </head>
 <body>
+    <% if (currentUser) { %>
     <a href="/">Back</a>
     <form method="POST" action="/admin" >
         <div>
@@ -16,5 +17,10 @@
             <button type="submit">submit</button>
         </div>
     </form>
+
+    <% } else { %>
+        <h1>Access Denied</h1>
+        <div><a href="/">back to sign in</a></div>
+    <% } %>
 </body>
 </html>
