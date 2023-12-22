@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 passport.use(
     new LocalStrategy(async (username, password, done) => {
         try {
-            console.log("here");
             const account = await Account.findOne({ username: username });
             if (!account) {
                 return done(null, false, { message: "Incorrect username" });
@@ -73,7 +72,6 @@ exports.log_in_post = passport.authenticate("local", {
 })
 
 exports.log_out_get = (req,res,next) => {
-    console.log("here");
     req.logout((err) => {
         if (err) {
             return next(err);

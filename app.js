@@ -9,6 +9,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require("./routes/authRouter");
 const messageRouter = require("./routes/messageRouter");
+const accountRouter = require("./routes/accountRouter");
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
@@ -39,5 +40,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", indexRouter);
 app.use("/", authRouter);
 app.use("/", messageRouter);
+app.use("/", accountRouter);
 
 module.exports = app;

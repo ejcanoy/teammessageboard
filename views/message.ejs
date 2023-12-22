@@ -21,15 +21,30 @@
             <li>
                 <% if (currentUser) { %>
                 <div>
-                    <%= messages[i].account_id.username %>
+                    <% if (currentUser.isMember) { %>
+                    <div><strong><em>Username: <%= messages[i].account_id.username %></em></strong></div>
+                    <% } %>
                     <span>
                         <%= messages[i].message_date %>
                     </span>
                 </div>
                 <% } %>
                 <div>
+                    <h5>
+                        <%= messages[i].title; %>
+                    </h5>
+                </div>
+                <div>
                     <%= messages[i].message %>
                 </div>
+                <% if (currentUser && currentUser.isAdmin) { %>
+                <div>
+                    <form action="/message/<%= messages[i]._id %>/delete" method="post">
+                        <input type="hidden" name="message_id" value="<%= messages[i]._id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                <% } %>
             </li>
             <%} %>
     </ul>
