@@ -10,12 +10,14 @@
 </head>
 
 <body>
+  <% if (currentUser) { %>
   <nav>
     <ul>
       <li><a href="/member">Become a Member</a></li>
       <li><a href="/admin">Become an Admin</a></li>
     </ul>
   </nav>
+  <% } %>
   <% if (!currentUser) { %>
     <%- include('log-in-form.ejs') %>
   <% } %>
